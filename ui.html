@@ -2,11 +2,23 @@
 <div>
   <label for="generate-test"> Generate Test From Current Page</label>
   <button id="generate-test">Generate</button>
+  <label for="visibilityToggle">
+    Toggle this checkbox for visibility
+    <input type="checkbox" name="visibilityToggle" id="visibilityToggle" />
+  </label>
 </div>
 <!-- <button id="close">Close</button> -->
 <script>
   document.getElementById("generate-test").onclick = () => {
-    parent.postMessage({ pluginMessage: { type: "generate-test" } }, "*");
+    parent.postMessage(
+      {
+        pluginMessage: {
+          type: "generate-test",
+          visibility: document.getElementById("visibilityToggle").checked
+        }
+      },
+      "*"
+    );
   };
 
   // document.getElementById("close").onclick = () => {
