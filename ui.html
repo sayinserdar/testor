@@ -1,17 +1,15 @@
-<h2>Rectangle Creator</h2>
-<p>Count: <input id="count" value="5"></p>
-<button id="create">Create</button>
-<button id="cancel">Cancel</button>
+<h1>Testor</h1>
+<div>
+  <label for="generate-test"> Generate Test From Current Page</label>
+  <button id="generate-test">Generate</button>
+</div>
+<!-- <button id="close">Close</button> -->
 <script>
+  document.getElementById("generate-test").onclick = () => {
+    parent.postMessage({ pluginMessage: { type: "generate-test" } }, "*");
+  };
 
-document.getElementById('create').onclick = () => {
-  const textbox = document.getElementById('count');
-  const count = parseInt(textbox.value, 10);
-  parent.postMessage({ pluginMessage: { type: 'create-rectangles', count } }, '*')
-}
-
-document.getElementById('cancel').onclick = () => {
-  parent.postMessage({ pluginMessage: { type: 'cancel' } }, '*')
-}
-
+  // document.getElementById("close").onclick = () => {
+  //   parent.postMessage({ pluginMessage: { type: "close" } }, "*");
+  // };
 </script>
